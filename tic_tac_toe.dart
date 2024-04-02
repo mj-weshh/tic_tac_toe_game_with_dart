@@ -13,7 +13,7 @@ void printBoard(board){
 }
 
 void checkWinner(board){
-  if ((board[0] == 'x' && board[2] == 'x' && board[2] == 'x')
+  if ((board[0] == 'x' && board[2] == 'x' && board[3] == 'x')
     ||(board[0] == 'x' && board[3] == 'x' && board[6] == 'x')
     ||(board[3] == 'x' && board[4] == 'x' && board[5] == 'x')
     ||(board[1] == 'x' && board[4] == 'x' && board[7] == 'x')
@@ -24,7 +24,7 @@ void checkWinner(board){
     print('player x won!!!');
     winnerx = true;
   }
-  else if ((board[0] == '0' && board[2] == '0' && board[2] == '0')
+  else if ((board[0] == '0' && board[2] == '0' && board[3] == '0')
     ||(board[0] == '0' && board[3] == '0' && board[6] == '0')
     ||(board[3] == '0' && board[4] == '0' && board[5] == '0')
     ||(board[1] == '0' && board[4] == '0' && board[7] == '0')
@@ -76,12 +76,17 @@ dynamic input(board){
 
 void main(){
   print("Welcome to my tic tac toe game!");
+  int count = 0;
   List<String> board = ['', '', '', '', '', '', '', '', ''] ;
   printBoard(board);
   checkWinner(board);
-  while(winner0 == false && winnerx == false){
+  while(winner0 == false && winnerx == false && count <=8){
     board =  input(board);
     printBoard(board);
     checkWinner(board);
+    count += 1;
+    if(count > 8){
+    print("It's a draw!");
+    }
   }
 }
